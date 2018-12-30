@@ -1,13 +1,13 @@
-import React from 'react';
-import { View, Text } from 'react-native';
+import React from "react";
+import { View, Text } from "react-native";
 
-import TimeAndDate from './TimeAndDate';
+import TimeAndDate from "./TimeAndDate";
 
 export default class CalendarScreen extends React.Component {
   render() {
     return (
       <View>
-        <TimeAndDate />
+        <TimeAndDate time={this.props.time} date={this.props.date} />
       </View>
     );
   }
