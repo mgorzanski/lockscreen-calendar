@@ -1,8 +1,10 @@
 import React from 'react';
 import LinearGradient from 'react-native-linear-gradient';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
 import CalendarScreen from './screens/Calendar';
+import PageDot from './components/PageDot';
+import layout from './styles/layout';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -17,7 +19,14 @@ export default class App extends React.Component {
   render() {
     return (
       <LinearGradient colors={['#FF9100', '#FFA726']} style={styles.linearGradient}>
-        { this.state.currentScreenId === 1 ? (<CalendarScreen />) : null }
+        <View>
+          { this.state.currentScreenId === 1 ? (<CalendarScreen />) : null }
+        </View>
+        <View style={styles.pages}>
+          <PageDot />
+          <View style={layout.divider5}></View>
+          <PageDot isActive="true" />
+        </View>
       </LinearGradient>
     );
   }
@@ -25,6 +34,13 @@ export default class App extends React.Component {
 
 const styles = StyleSheet.create({
   linearGradient: {
-    flex: 1
+    display: 'flex',
+    flex: 1,
+    justifyContent: 'space-between'
+  },
+  pages: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    marginBottom: 35
   }
 });
